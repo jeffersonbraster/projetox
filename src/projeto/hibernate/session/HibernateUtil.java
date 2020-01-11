@@ -1,4 +1,4 @@
-package hibernate.session;
+package projeto.hibernate.session;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.SessionFactoryImplementor;
 
-import crud.VariavelConexaoUtil;
+import projeto.crud.VariavelConexaoUtil;
 
 /**
  * Responsavel por fazer a conexão com hibernate
