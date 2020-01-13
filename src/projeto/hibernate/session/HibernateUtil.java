@@ -14,7 +14,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.SessionFactoryImplementor;
 
-import projeto.crud.VariavelConexaoUtil;
+import projeto.implementacao.crud.VariavelConexaoUtil;
 
 /**
  * Responsavel por fazer a conexão com hibernate

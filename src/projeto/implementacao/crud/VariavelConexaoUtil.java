@@ -1,4 +1,4 @@
-package projeto.crud;
+package projeto.implementacao.crud;
 
 /*
  * Nome do caminho do JNDI datasource tomcat
