@@ -18,7 +18,7 @@
 		minEvictableIdleTimeMillis="100000"
 		antiJARLocking="false"
 		antiResourceLocking="false"
-		username="projetox"
+		username="postgres"
 		password="admin"
 		url="jdbc:postgresql://localhost:5432/projetoxbd?autoReconect=true" />
 	 
