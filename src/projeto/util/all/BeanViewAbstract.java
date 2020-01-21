@@ -1,4 +1,4 @@
-package project.util.all;
+package projeto.util.all;
 
 import org.springframework.stereotype.Component;
 
