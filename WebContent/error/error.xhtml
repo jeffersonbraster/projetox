@@ -6,9 +6,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-
+	<meta http-equiv="Content-Type" content="text/html/ charset=UTF-8" />
+	<title><ui:insert name="titulo">ProjetoX</ui:insert></title>
 </h:head>
-<h:body>
-Página inicial
-</h:body>
+<h:form>
+	<h:body>
+		<p:panel id="panelError" header="Aviso">			
+			<h:graphicImage library="img" name="error.png" width="200px" height="200px">
+				<h:outputLabel value="Ocorreu um erro inesperado na operação, tente novamente mais tarde." />
+			</h:graphicImage>
+		</p:panel>
+	</h:body>
+</h:form>
 </html>
