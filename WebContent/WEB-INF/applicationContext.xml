@@ -70,4 +70,34 @@
 	<bean id="simpleJdbcClass" name="simpleJdbcClass" class="projeto.implementacao.crud.SimpleJdbcClassImplementacao">
 		<constructor-arg name="dataSource" ref="springDataSource" />
 	</bean>
+	
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" lazy-init="false">
+		<property name="mappings">
+			<props>
+				<prop key="/index.jsp">indexController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" lazy-init="false">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WebContent/"/>
+		<property name="suffix" value="*.jsf, *.xhtml, *.html, *.jsp, *.js"></property>
+	</bean>
+	
+	<bean name="indexController" lazy-init="false" class="org.springframework.web.servlet.mvc.ParameterizableViewController" />
+	
+	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer" lazy-init="false">
+		<property name="scopes">
+			<map>
+				<entry key="view">
+					<bean class="projeto.bean.geral.ViewScope"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="reportUtil" class="projeto.report.util.ReportUtil"/>
+	<bean id="utilFramework" class="projeto.framework.utils.UtilFramework" scope="session"/>
+	
 </beans>
