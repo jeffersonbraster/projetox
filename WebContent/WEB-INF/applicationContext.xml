@@ -99,5 +99,6 @@
 	
 	<bean id="reportUtil" class="projeto.report.util.ReportUtil"/>
 	<bean id="utilFramework" class="projeto.framework.utils.UtilFramework" scope="session"/>
+	<bean id="sessionController" class="projeto.geral.controller.SessionController" scope="singleton"/>
 	
 </beans>
