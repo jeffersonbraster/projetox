@@ -28,7 +28,7 @@
 			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
 				<span class="estiloSpan">Acesso não autorizado, login ou senha incorretos.</span>
 			</h:outputLabel>
-			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum session of 1 for this principal exceeded'}">
+			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum sessions of 1 for this principal exceeded'}">
 				<span class="estiloSpan">Acesso não autorizado, já está logado em outra sessão.</span>
 				<h:commandButton value="Encerrar sessão" style="height:40px; width:100px; background:#CDCDC1; border:1px;"
 				onclick="invalidarSession('#{request.contextPath}', '/publico/invalidateSession');"/>
