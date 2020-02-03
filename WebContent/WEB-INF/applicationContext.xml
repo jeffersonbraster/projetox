@@ -100,12 +100,13 @@
 	<bean id="reportUtil" class="projeto.report.util.ReportUtil"/>
 	<bean id="utilFramework" class="projeto.framework.utils.UtilFramework" scope="session"/>
 	
-	<!-- Controlles -->
+	<!-- Services -->
+	<bean id="srvLogin" class="srv.implementacao.SrvLoginImpl"/>
 	
 	<!-- DAOS -->
 	<bean id="repositoryLogin" class="dao.implementacao.DaoLogin" scope="singleton"/>
 	
-	<!-- Services -->
+	<!-- Controllers -->
 	<bean id="sessionController" class="projeto.geral.controller.SessionController" scope="singleton"/>
 	
 </beans>
