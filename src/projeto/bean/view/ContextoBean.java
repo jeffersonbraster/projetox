@@ -27,6 +27,7 @@ public class ContextoBean implements Serializable {
 	@Autowired
 	private EntidadeController entidadeController; 
 	
+	
 	@Autowired
 	private SessionController sessionController;
 	
@@ -63,7 +64,7 @@ public class ContextoBean implements Serializable {
 		return getExternalContext().getUserPrincipal().getName();
 	}
 	
-	public 	ExternalContext getExternalContext() {
+	public ExternalContext getExternalContext() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
 		return externalContext;

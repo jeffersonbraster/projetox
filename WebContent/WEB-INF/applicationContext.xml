@@ -107,6 +107,6 @@
 	<bean id="repositoryLogin" class="dao.implementacao.DaoLogin" scope="singleton"/>
 	
 	<!-- Controllers -->
-	<bean id="sessionController" class="projeto.geral.controller.SessionController" scope="singleton"/>
+	<bean id="sessionController" class="projeto.geral.controller.SessionControlerImpl" scope="singleton"/>
 	
 </beans>
