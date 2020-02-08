@@ -74,8 +74,7 @@
  				  </span> 				  
  				</div>
  				
- 				<div id="menupop">
- 					
+ 				<div id="menupop"> 					
  					<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">
  						<p:commandLink actionListener="#{mensagemBeanView.novo}" value="Enviar Torpedo" immediate="true" 
  						style="display:block;" id="enviarMensagem" ajax="true" process="@this" onsuccess="enviarMsgDialog.show();">
@@ -88,7 +87,25 @@
  					</a>
  				</div>
  				
+ 				<div id="menu">
+ 					<span id="iniciarmenu">
+ 						<h:graphicImage library="img" name="iconemenu.png" 
+ 						styleClass="bordaimagem" id="iconemenu">
+ 						  Menu
+ 						</h:graphicImage>
+ 					</span>
+ 				</div>
  				
+ 				<div id="corpo" class="corpo">
+ 				   <ui:insert name="corpo" />
+ 				</div>
+ 				
+ 				<div id="barramenu">
+ 					<p:tieredMenu id="menuEsquerdo" style="width: 180px; border: none; background: none; color: #000;">
+ 						<p:menuitem onclick="recirecionarPagina('#{request.contextPath}', '/restrito/principal');" value="Inicio" id="menuinicio" ajax="true"/>
+ 						<p:menuitem onclick="javascript:logout('#{request.contextPath}');" value="Sair" id="menusair" ajax="true"/>
+ 					</p:tieredMenu>
+ 				</div> 				
  			</div>
  			
  			<p:dialog widgetVar="enviarMsgDialog" id="alterarMsgDialog" width="800px" modal="true" resizable="false" height="360px" 
