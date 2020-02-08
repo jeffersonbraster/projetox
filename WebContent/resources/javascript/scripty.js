@@ -22,3 +22,16 @@ function validarSenhaLogin() {
 	return true;
 
 }
+
+function logout(contextPath) {
+	
+	var post = 'invalidar_session';
+	
+	$.ajax({
+		type:"POST",
+		url:post
+	}).always(function(resposta) {
+		document.location = contextPath + '/j_spring_security_logout';		
+	});
+	
+}
