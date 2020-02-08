@@ -35,3 +35,15 @@ function logout(contextPath) {
 	});
 	
 }
+
+function abrirmenupop() {
+	$("#menupop").show('slow').mouseleave(function() {
+		fecharMenuPop();
+	});	
+}
+
+function fecharMenuPop() {
+	if($("#menupop").is(":visible")) {
+		$("#menupop").hide("slow");
+	}
+}

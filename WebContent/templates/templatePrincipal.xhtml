@@ -66,10 +66,43 @@
  				  	 <br id="quebraUltimoAcesso"/>
  				  	 <a href="#" onclick="javascript:logout('#{request.contextPath}')">Sair</a>
  				  </span>
+ 				  
+ 				  <span id="menuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px;">
+ 				  	<a href="#" onclick="abrirmenupop();">
+ 				  		<h:graphicImage library="img" name="setabaixo.png" styleClass="bordaimagem" id="imgSetaBaixo"/>
+ 				  	</a>
+ 				  </span> 				  
+ 				</div>
+ 				
+ 				<div id="menupop">
+ 					
+ 					<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">
+ 						<p:commandLink actionListener="#{mensagemBeanView.novo}" value="Enviar Torpedo" immediate="true" 
+ 						style="display:block;" id="enviarMensagem" ajax="true" process="@this" onsuccess="enviarMsgDialog.show();">
+ 							<p:ajax immediate="true" listener="#{mensagemBeanView.novo}"/>
+ 						</p:commandLink>
+ 					</sec:ifAnyGranted>
+ 					
+ 					<a href="#" onclick="alterarSenhaDialog.show();" style="display: block;" id="alteraSenha">
+ 						<span style="display: block" id="spanAlteraSenha">Alterar Senha</span>
+ 					</a>
  				</div>
  				
  				
  			</div>
+ 			
+ 			<p:dialog widgetVar="enviarMsgDialog" id="alterarMsgDialog" width="800px" modal="true" resizable="false" height="360px" 
+ 			header="Enviar Torpedo" dynamic="true" appendToBody="false">
+ 				teste dialog senha
+ 			</p:dialog>
+ 			
+ 			<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" width="240px" modal="true" resizable="false" height="170px" 
+ 			header="Alterar Senha" dynamic="true" appendToBody="false">
+ 				teste dialog senha
+ 			</p:dialog>
+ 			<script>
+ 				$('#menupop').hide();
+ 			</script>
  	</h:body>   
 </h:form>
 </sec:isAuthenticated>
