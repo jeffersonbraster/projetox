@@ -31,8 +31,10 @@
 		<h:outputStylesheet name="estilo.css" library="css" id="cssStileSistema"/> 	
  	<h:body>
  			<script type="text/javascript" charset="UTF-8">
- 				$.noConflit();
- 				
+ 				$.noConflict();
+ 				localeData_pt_br();
+ 				initTamplete();
+ 				ocultarMenu();
  				
  				/*Bloqueia F5 do teclado*/
  				$(document).keydown(function(e){
@@ -117,10 +119,13 @@
  			header="Alterar Senha" dynamic="true" appendToBody="false">
  				teste dialog senha
  			</p:dialog>
- 			<script>
- 				$('#menupop').hide();
- 			</script>
+ 			
  	</h:body>   
 </h:form>
+
+	<script type="text/javascript" charset="UTF-8">
+		carregarIdElementosPagina();
+	</script>
+
 </sec:isAuthenticated>
 </html>
