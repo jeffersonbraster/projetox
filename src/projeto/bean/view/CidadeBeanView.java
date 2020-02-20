@@ -2,6 +2,9 @@ package projeto.bean.view;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 	
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
+	
+	private List<Cidade> list = new ArrayList<Cidade>();
 	
 	private Cidade objetoSelecionado = new Cidade();
 	
@@ -40,6 +45,20 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		return getUrl();
 	}
 	
+	@Override
+	public String editar() throws Exception {
+		
+		return getUrl();
+	}
+	
+	@Override
+	public void excluir() throws Exception {
+		
+		cidadeController.delete(objetoSelecionado);
+		
+		novo();
+	}
+	
 	
 
 	public Cidade getObjetoSelecionado() {
@@ -56,6 +75,17 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public List<Cidade> getList() throws Exception {
+		list = cidadeController.findList(Cidade.class);
+		return list;
+	}
+
+	public void setList(List<Cidade> list) {
+		this.list = list;
 	}	
+	
+	
 
 }
