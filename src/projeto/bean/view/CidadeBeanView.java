@@ -19,18 +19,26 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 	
+	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
+	
 	private Cidade objetoSelecionado = new Cidade();
 	
 	@Autowired
 	private CidadeController cidadeController;
 	
+	
+	
 	@Override
 	public String save() throws Exception {
-		System.out.println(objetoSelecionado.getCid_descricao());
+		objetoSelecionado = cidadeController.merge(objetoSelecionado);
 		return "";
 	}
 	
-	
+	@Override
+	public String novo() throws Exception {
+		objetoSelecionado = new Cidade();
+		return getUrl();
+	}
 	
 	
 
@@ -41,9 +49,13 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	public void setObjetoSelecionado(Cidade objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
-	
-	
-	
-	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}	
 
 }
