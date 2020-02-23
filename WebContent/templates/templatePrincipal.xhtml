@@ -37,11 +37,13 @@
  				ocultarMenu();
  				
  				/*Bloqueia F5 do teclado*/
- 				$(document).keydown(function(e){
- 					if (e.which == 116){
- 						return 116;
+ 				window.onkeydown = function(e) {
+ 					if(e.keyCode === 116 || e.keyCode === 82) {
+ 						e.keyCode = 0;
+ 						e.returnValue = false;
+ 						return false;
  					}
- 				});
+ 				}
  			</script> 
  			<ui:include src="/templates/barraProgresso.xhtml" />
  			<div id="msgError">
