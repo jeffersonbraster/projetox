@@ -13,6 +13,7 @@
 	<composite:interface name="botoesCrud">
 		<composite:attribute name="managedBeanView" required="true" />
 		<composite:attribute name="botaoNovo" required="false" default="true"/>
+		<composite:attribute name="botaoSalvar" required="false" default="true"/>
 		<composite:attribute name="camposReload" required="false"></composite:attribute>
 	</composite:interface>
 	
@@ -22,6 +23,11 @@
 		<p:commandButton value="Novo" style="heigth:40px; width: 100px; background:#CDCDC1; border:1px solid #FFFFFF;" 
 		rendered="#{cc.attrs.botaoNovo}" action="#{cc.attrs.managedBeanView.novo}" ajax="false" immediate="true" id="buttonNovo"
 		update="#{cc.attrs.camposReload}"></p:commandButton>
+		
+		<p:commandButton value="Salvar" style="heigth:40px; width: 100px; background:#CDCDC1; border:1px solid #FFFFFF;" 
+		rendered="#{cc.attrs.botaoSalvar}" actionListener="#{cc.attrs.managedBeanView.saveNotReturn}" ajax="false" partialSubmit="true" 
+		id="buttonSalvar" process="@this, @form" immediate="false" update="#{cc.attrs.camposReload}">
+		</p:commandButton>
 	</composite:implementation>
 			
 </html>
