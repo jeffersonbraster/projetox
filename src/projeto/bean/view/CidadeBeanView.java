@@ -49,6 +49,11 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	}
 	
 	@Override
+	public void saveEdit() throws Exception {
+		saveNotReturn();
+	}
+	
+	@Override
 	public String novo() throws Exception {
 		objetoSelecionado = new Cidade();
 		return getUrl();

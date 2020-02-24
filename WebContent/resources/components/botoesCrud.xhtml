@@ -14,6 +14,7 @@
 		<composite:attribute name="managedBeanView" required="true" />
 		<composite:attribute name="botaoNovo" required="false" default="true"/>
 		<composite:attribute name="botaoSalvar" required="false" default="true"/>
+		<composite:attribute name="botaoAtualizar" required="false" default="true"/>
 		<composite:attribute name="camposReload" required="false"></composite:attribute>
 	</composite:interface>
 	
@@ -28,6 +29,10 @@
 		rendered="#{cc.attrs.botaoSalvar}" actionListener="#{cc.attrs.managedBeanView.saveNotReturn}" ajax="false" partialSubmit="true" 
 		id="buttonSalvar" process="@this, @form" immediate="false" update="#{cc.attrs.camposReload}">
 		</p:commandButton>
+		
+		<p:commandButton value="Atualizar" style="heigth:40px; width: 100px; background:#CDCDC1; border:1px solid #FFFFFF;"
+		rendered="#{cc.attrs.botaoAtualizar}" actionListener="#{cc.attrs.managedBeanView.saveEdit}" ajax="false" partialSubmit="true" process="@this, @form"
+		immediate="false" update="#{cc.attrs.camposReload}"></p:commandButton>
 	</composite:implementation>
 			
 </html>
