@@ -46,7 +46,8 @@
 			<util:botoesCrud managedBeanView="#{cidadeBeanView}" camposReaload=":formTemplate:msg, tableResult" 
 			botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
 			botaoSalvar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo == null}"
-			botaoAtualizar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}">
+			botaoAtualizar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}"
+			botaoExcluir="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}">
 			
 			</util:botoesCrud>
 
