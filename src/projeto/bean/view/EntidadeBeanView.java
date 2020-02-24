@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import projeto.bean.geral.BeanManagedViewAbstract;
+import projeto.geral.controller.EntidadeController;
+import projeto.interfac.crud.InterfaceCrud;
+import projeto.model.classes.Entidade;
 
 @Controller
 @Scope(value = "session")
@@ -19,6 +22,9 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Autowired
 	private ContextoBean contextoBean;
+	
+	@Autowired
+	private EntidadeController entidadeController;
 
 	public String getUsuarioLogadoSecurity() {
 		return contextoBean.getAuthentication().getName();
@@ -26,6 +32,17 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	
 	public Date getUltimoAcesso() throws Exception {
 		return contextoBean.getEntidadeLogada().getEnt_ultimoacesso();
+	}
+
+	@Override
+	protected Class<Entidade> getClassImplement() {
+		return Entidade.class;
+	}
+
+	@Override
+	protected InterfaceCrud<Entidade> getController() {
+		// TODO Auto-generated method stub
+		return entidadeController;
 	}
 
 }

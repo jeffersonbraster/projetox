@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 
 import projeto.bean.geral.BeanManagedViewAbstract;
 import projeto.geral.controller.EstadoController;
+import projeto.interfac.crud.InterfaceCrud;
+import projeto.model.classes.Estado;
 
 @Controller
 @Scope(value = "session")
@@ -26,6 +28,18 @@ public class EstadoBeanView extends BeanManagedViewAbstract {
 	
 	public List<SelectItem> getEstados() throws Exception {
 		return estadoController.getListEstado();
+	}
+
+
+	@Override
+	protected Class<Estado> getClassImplement() {
+		return Estado.class;
+	}
+
+
+	@Override
+	protected InterfaceCrud<Estado> getController() {
+		return estadoController;
 	}
 
 }

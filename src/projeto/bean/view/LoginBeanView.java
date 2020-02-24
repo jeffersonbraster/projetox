@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import projeto.bean.geral.BeanManagedViewAbstract;
 import projeto.geral.controller.SessionController;
+import projeto.interfac.crud.InterfaceCrud;
 import framework.interfac.crud.SrvLogin;
 
 @Controller
@@ -85,6 +86,16 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	protected Class getClassImplement() {
+		return null;
+	}
+
+	@Override
+	protected InterfaceCrud<?> getController() {
+		return null;
 	}
 
 }

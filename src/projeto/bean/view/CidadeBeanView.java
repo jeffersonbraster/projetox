@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import projeto.bean.geral.BeanManagedViewAbstract;
 import projeto.geral.controller.CidadeController;
+import projeto.interfac.crud.InterfaceCrud;
 import projeto.model.classes.Cidade;
 
 @Controller
@@ -23,6 +24,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 	
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
+	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
 	
 	private List<Cidade> list = new ArrayList<Cidade>();
 	
@@ -55,8 +57,14 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String novo() throws Exception {
-		objetoSelecionado = new Cidade();
+		setarVeriaveisNulas();
 		return getUrl();
+	}
+	
+	@Override
+	public void setarVeriaveisNulas() throws Exception {
+		list.clear();
+		objetoSelecionado = new Cidade();
 	}
 	
 	@Override
@@ -67,11 +75,17 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void excluir() throws Exception {
-		objetoSelecionado = (Cidade) cidadeController.getSession().get(Cidade.class, objetoSelecionado.getCid_codigo());
+		objetoSelecionado = (Cidade) cidadeController.getSession().get(getClassImplement(), objetoSelecionado.getCid_codigo());
 		cidadeController.delete(objetoSelecionado);
 		list.remove(objetoSelecionado);
 		novo();
 		sucesso();
+	}
+	
+	@Override
+	public String redirecionarFindEntidade() throws Exception {
+		setarVeriaveisNulas();
+		return urlFind;
 	}
 	
 	
@@ -92,13 +106,25 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		this.url = url;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Cidade> getList() throws Exception {
-		list = cidadeController.findList(Cidade.class);
+		list = cidadeController.findList(getClassImplement());
 		return list;
 	}
 
 	public void setList(List<Cidade> list) {
 		this.list = list;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	protected Class getClassImplement() {
+		return Cidade.class;
+	}
+
+	@Override
+	protected InterfaceCrud<?> getController() {
+		return cidadeController;
 	}	
 	
 	
