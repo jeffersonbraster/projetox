@@ -11,9 +11,7 @@
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">	
-		<util:menuImpressao bean="#{cidadeBeanView}">
-		
-		</util:menuImpressao>		
+				
 		<h:form id="formCadastro" prependId="false">
 			<c:set var="isCadastro" value="false" scope="view" />
 			<p:panel header="Cadastro de cidades" id="panelCadastro">
