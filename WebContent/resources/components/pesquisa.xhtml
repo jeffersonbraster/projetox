@@ -39,8 +39,10 @@
 					<p:selectOneMenu style="width:150px;" id="campo" 
 					onchange="" 
 					value="">
-						<f:selectItems var="campoPesquisaSelecionar" id="itensCampoPesquisa">
-						
+						<f:selectItems var="campoPesquisaSelecionar" id="itensCampoPesquisa" value="#{cc.attrs.managedBeanView.listaCampoPesquisa}"
+						itemLabel="#{campoPesquisaSelecionar.descricao}"
+						itemValue="#{campoPesquisaSelecionar.tipoClass}">
+							
 						</f:selectItems>						
 					</p:selectOneMenu>
 				</h:panelGrid>
