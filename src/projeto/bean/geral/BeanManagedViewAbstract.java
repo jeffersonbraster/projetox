@@ -26,9 +26,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	
 	public ObjetoCampoConsulta objetoCampoConsultaSelecionado;
 	
-	public List<SelectItem> listaCampoPesquisa;
-	
-	
+	public List<SelectItem> listaCampoPesquisa;	
 	
 	
 	
@@ -38,6 +36,21 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	}
 
 	public void setObjetoCampoConsultaSelecionado(ObjetoCampoConsulta objetoCampoConsultaSelecionado) {
+		
+		if(objetoCampoConsultaSelecionado != null) {
+			for (Field field : getClassImplement().getDeclaredFields()) {
+				if(field.isAnnotationPresent(IdentificaCampoPesquisa.class)) {
+					if(objetoCampoConsultaSelecionado.getCampoBanco().equalsIgnoreCase(field.getName())) {
+						String descricaoCampo = field.getAnnotation(IdentificaCampoPesquisa.class).descricaoCampo();
+						objetoCampoConsultaSelecionado.setDescricao(descricaoCampo);
+						objetoCampoConsultaSelecionado.setTipoClass(field.getType().getCanonicalName());
+						objetoCampoConsultaSelecionado.setPrincipal(field.getAnnotation(IdentificaCampoPesquisa.class).principal());
+						break;
+					}
+				}
+			}
+		}
+		
 		this.objetoCampoConsultaSelecionado = objetoCampoConsultaSelecionado;
 	}
 	
