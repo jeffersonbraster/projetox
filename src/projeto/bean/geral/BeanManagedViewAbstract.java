@@ -12,6 +12,7 @@ import javax.faces.model.SelectItem;
 import org.springframework.stereotype.Component;
 
 import projeto.annotation.IdentificaCampoPesquisa;
+import projeto.enums.CondicaoPesquisa;
 import projeto.interfac.crud.InterfaceCrud;
 import projeto.report.util.BeanReportView;
 
@@ -28,8 +29,30 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	
 	public List<SelectItem> listaCampoPesquisa;	
 	
+	public List<SelectItem> listaCondicaoPesquisa;
+	
+	public CondicaoPesquisa condicaoPesquisaSelecionado;
 	
 	
+	
+	public void setCondicaoPesquisaSelecionado(CondicaoPesquisa condicaoPesquisaSelecionado) {
+		this.condicaoPesquisaSelecionado = condicaoPesquisaSelecionado;
+	}
+	
+	public CondicaoPesquisa getCondicaoPesquisaSelecionado() {
+		return condicaoPesquisaSelecionado;
+	}
+	
+	
+	public List<SelectItem> getListaCondicaoPesquisa() {
+		
+		listaCondicaoPesquisa = new ArrayList<SelectItem>();
+		for (CondicaoPesquisa condicaoPesquisa : CondicaoPesquisa.values()) {
+			listaCondicaoPesquisa.add(new SelectItem(condicaoPesquisa, condicaoPesquisa.toString()));
+		}
+		
+		return listaCondicaoPesquisa;
+	}
 
 	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado() {
 		return objetoCampoConsultaSelecionado;
