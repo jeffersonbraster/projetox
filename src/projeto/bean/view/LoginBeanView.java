@@ -29,27 +29,26 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	private String username;
 	private String password;
 	
-	@Resource
+	@Autowired
 	private SessionController sessionController;
 	
-	@Resource
+	@Autowired
 	private SrvLogin srvLogin;
 	
 	@RequestMapping(value = "**/invalidar_session", method = RequestMethod.POST)
 	public void invalidarSessionMetodo(HttpServletRequest httpServletRequest) throws Exception {
-		String useLogadoSessao = null;
+		String userLogadoSessao = null;
 		
-		if(httpServletRequest.getUserPrincipal() != null) {
-			useLogadoSessao = httpServletRequest.getUserPrincipal().getName();
+		if (httpServletRequest.getUserPrincipal() != null){
+			 userLogadoSessao = httpServletRequest.getUserPrincipal().getName();
+		}
+
+		if (userLogadoSessao == null || (userLogadoSessao != null && userLogadoSessao.trim().isEmpty())) {
+			userLogadoSessao = httpServletRequest.getRemoteUser();
 		}
 		
-		if(useLogadoSessao == null || (useLogadoSessao != null && useLogadoSessao.trim().isEmpty())) {
-			useLogadoSessao = httpServletRequest.getRemoteUser();
-		}
-		
-		if(useLogadoSessao != null && !useLogadoSessao.isEmpty()) {
-			sessionController.invalidateSession(useLogadoSessao);
-		}
+		if (userLogadoSessao != null && !userLogadoSessao.isEmpty())
+			sessionController.invalidateSession(userLogadoSessao);
 	}
 
 	public void invalidar(ActionEvent actionEvent) throws Exception {
@@ -62,7 +61,7 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 			loggedIn = true;
 		}else {
 			loggedIn = false;
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso negado", "Login ou senha incorretos");
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso negado, Login ou senha incorretos", "");
 		}
 		
 		if (message != null){
