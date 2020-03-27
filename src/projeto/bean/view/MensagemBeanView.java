@@ -37,4 +37,10 @@ public class MensagemBeanView extends BeanManagedViewAbstract {
 		return null;
 	}
 
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

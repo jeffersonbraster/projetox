@@ -99,6 +99,7 @@
 	
 	<bean id="reportUtil" class="projeto.report.util.ReportUtil"/>
 	<bean id="utilFramework" class="projeto.framework.utils.UtilFramework" scope="session"/>
+	<bean id="controller" name="controller" class="framework.controller.crud.Controlle"/>
 	
 	<!-- Services -->
 	<bean id="srvLogin" class="srv.implementacao.SrvLoginImpl"/>

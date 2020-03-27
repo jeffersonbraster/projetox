@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import projeto.bean.geral.BeanManagedViewAbstract;
 import projeto.geral.controller.CidadeController;
 import projeto.interfac.crud.InterfaceCrud;
+import projeto.lazy.CarregamentoLazyListObject;
 import projeto.model.classes.Cidade;
 
 @Controller
@@ -27,7 +28,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
 	
-	private List<Cidade> list = new ArrayList<Cidade>();
+	private CarregamentoLazyListObject<Cidade> list = new CarregamentoLazyListObject<Cidade>();
 	
 	private Cidade objetoSelecionado = new Cidade();
 	
@@ -51,7 +52,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
-		list.clear();
+		list.clean();
 		objetoSelecionado = cidadeController.merge(objetoSelecionado);
 		list.add(objetoSelecionado);
 		objetoSelecionado = new Cidade();
@@ -71,13 +72,13 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void setarVeriaveisNulas() throws Exception {
-		list.clear();
+		list.clean();
 		objetoSelecionado = new Cidade();
 	}
 	
 	@Override
 	public String editar() throws Exception {
-		list.clear();
+		list.clean();
 		return getUrl();
 	}
 	
@@ -115,13 +116,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Cidade> getList() throws Exception {
-		list = cidadeController.findList(getClassImplement());
+	public CarregamentoLazyListObject<Cidade> getList() throws Exception {
 		return list;
-	}
-
-	public void setList(List<Cidade> list) {
-		this.list = list;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -138,8 +134,15 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void consultarEntidade() throws Exception {
+		objetoSelecionado = new Cidade();
+		list.clean();
+		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
+	}
+
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
 		// TODO Auto-generated method stub
-		super.consultarEntidade();
+		return "";
 	}
 	
 

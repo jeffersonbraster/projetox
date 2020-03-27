@@ -71,8 +71,9 @@
 			
 			<p:spacer/>
 			
-			<p:dataTable id="tableResult" rendered="true" value="#{cc.attrs.managedBeanView.list}" var="objeto" rows="10"
-			widgetVar="tableResult" paginatorPosition="bottom" lazy="true" paginator="true" emptyMessage="Sem valores para exibir."
+			<p:dataTable id="tableResult" rendered="true" value="#{cc.attrs.managedBeanView.list}" var="objeto" 
+			rows="10" widgetVar="tableResult" paginatorPosition="bottom" lazy="true" paginator="true" 
+			emptyMessage="Sem valores para exibir."
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 			
 				<ui:include src="#{cc.attrs.colunasGridDataTableList}"/>
