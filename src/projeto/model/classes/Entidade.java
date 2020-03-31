@@ -29,6 +29,8 @@ public class Entidade implements Serializable {
 	
 	private boolean ent_inativo = false;
 	
+	private String ent_nomefantasia;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_ultimoacesso;
 	
@@ -62,6 +64,14 @@ public class Entidade implements Serializable {
 	}
 	public void setEnt_codigo(Long ent_codigo) {
 		this.ent_codigo = ent_codigo;
+	}
+	
+		
+	public String getEnt_nomefantasia() {
+		return ent_nomefantasia;
+	}
+	public void setEnt_nomefantasia(String ent_nomefantasia) {
+		this.ent_nomefantasia = ent_nomefantasia;
 	}
 	@Override
 	public int hashCode() {

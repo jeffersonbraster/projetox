@@ -26,6 +26,7 @@
 		<mapping class="projeto.model.classes.Pais"/>
 		<mapping class="projeto.model.classes.Cidade"/>
 		<mapping class="projeto.model.classes.Estado"/>
+		<mapping class="projeto.model.classes.Mensagem"/>
 		
 		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
 		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
