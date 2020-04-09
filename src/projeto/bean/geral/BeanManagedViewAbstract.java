@@ -168,7 +168,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		}else if(condicaoPesquisaSelecionado.name().equalsIgnoreCase(CondicaoPesquisa.INICIA.name())) {
 						sql.append(" like retira_acentos(upper('");
 						sql.append(valorPesquisa);
-						sql.append("'))");
+						sql.append("%'))");
 		}
 		
 			

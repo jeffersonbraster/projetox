@@ -198,8 +198,8 @@
 		<util:pesquisa managedBeanView="#{funcionarioBeanView}"
 			ocultaNovo="false" nomePesquisa="Pesquisa usuário"
 			colunasGridDataTableList="/resources/components/colunasDataTableFuncionario.xhtml"
-			funcaoJavaScript="pesquisaUserDestinoPerderFocoDialog(#{objeto.ent_codigo}), destinoDialogMsgDialog.hide()">
-
+			funcaoJavaScript="pesquisaUserDestinoPerderFocoDialog(#{objeto.ent_codigo}), destinoDialogMsgDialog.hide()"
+			exibirBotaoAdd="true">
 		</util:pesquisa>
 
 	</p:dialog>

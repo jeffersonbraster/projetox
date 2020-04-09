@@ -40,7 +40,18 @@ public class Entidade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_ultimoacesso;
 	
+	private String tipoentidade = "";
+	
+	
 		
+	
+	
+	public String getTipoentidade() {
+		return tipoentidade;
+	}
+	public void setTipoentidade(String tipoentidade) {
+		this.tipoentidade = tipoentidade;
+	}
 	public Date getEnt_ultimoacesso() {
 		return ent_ultimoacesso;
 	}

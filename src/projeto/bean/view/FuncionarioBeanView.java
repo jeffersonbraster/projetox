@@ -43,7 +43,7 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
-		return "";
+		return " and entity.tipoentidade = 'FUNCIONARIO' ";
 	}
 	
 	
