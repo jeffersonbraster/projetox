@@ -301,3 +301,17 @@ function validarCampoPesquisa(valor) {
 		}
 	}
 }
+
+function pesquisaUserDestinoPerderFocoDialog(codUser) {
+	if (codUser != ''){
+		$("#usr_destinoMsgDialog").val('');
+		$("#loginDestinoMsgDialog").val('');
+		$.get("buscarUsuarioDestinoMsg?codEntidade=" + codUser , function(resposta) {
+			if (resposta.trim() != ''){
+				var entidade = JSON.parse(resposta);
+				$("#usr_destinoMsgDialog").val(entidade.ent_codigo);
+				$("#loginDestinoMsgDialog").val(entidade.ent_login);
+			}
+		});
+	}
+}

@@ -182,6 +182,7 @@ public class Mensagem implements Serializable{
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		map.put("men_codigo", men_codigo);
 		map.put("men_lido", men_lido);
+		map.put("men_assunto", men_assunto);
 		return new JSONObject(map);
 	}
 	

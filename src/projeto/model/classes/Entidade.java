@@ -2,6 +2,8 @@ package projeto.model.classes;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.envers.Audited;
+import org.primefaces.json.JSONObject;
+
+import projeto.annotation.IdentificaCampoPesquisa;
 
 @Audited
 @Entity
@@ -23,12 +28,13 @@ public class Entidade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ent_codigo;
 	
+	@IdentificaCampoPesquisa(campoConsulta = "ent_login", descricaoCampo = "Nome", principal = 1)
 	private String ent_login = null;
 	
 	private String ent_senha;
 	
 	private boolean ent_inativo = false;
-	
+		
 	private String ent_nomefantasia;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -98,7 +104,13 @@ public class Entidade implements Serializable {
 	}
 	
 	
-	
+	public JSONObject getJson() {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("ent_codigo", ent_codigo);
+		map.put("ent_login", ent_login);
+		map.put("ent_nomefantasia", ent_nomefantasia);
+		return new JSONObject(map);
+	}
 	
 
 }
