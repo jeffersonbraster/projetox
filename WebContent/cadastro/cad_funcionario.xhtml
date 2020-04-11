@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+	<ui:define name="corpo">	
+		<h:form id="formCadastro" prependId="false">
+			<p:panel header="Cadastro de funcionário" id="panelCadastro">
+				<p:panelGrid id="gridFunc" columns="3">
+					<p:column>
+						<p:row>
+							<h:outputLabel for="id" value="Código: " id="labelId"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputText readonly="true" id="id" value="#{funcionarioBeanView.objetoselecionado.ent_codigo}" style="width:50px"/>
+						</p:row>
+					</p:column>
+					<p:column/>
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="ent_nomefantasia" value="Apelido: " id="labelNome"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputText id="ent_nomefantasia" value="#{funcionarioBeanView.objetoselecionado.ent_nomefantasia}" required="true"
+							requiredMessage="Informe um nome" maxlength="100" style="width:350px"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="ent_nomefantasia"/>
+						</p:row>
+					</p:column>
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="tipoEntidade" value="Tipo: " id="labelTipo"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:selectOneMenu id="tipoEntidade" required="true" requiredMessage="Informe o tipo" value="#{funcionarioBeanView.objetoselecionado.tipoentidade}">
+								<f:selectItem itemValue="FUNCIONARIO" itemLabel="Funcionário"/>
+								<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
+							</p:selectOneMenu>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="tipoEntidade"/>
+						</p:row>
+					</p:column>
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="entInativo" value="Inativo: " id="labelInativo"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:selectBooleanCheckbox id="entInativo" value="#{funcionarioBeanView.objetoselecionado.ent_inativo}"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="entInativo"/>
+						</p:row>
+					</p:column>
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="email" value="E-mail: " id="labelEmail"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputText id="email" value="#{funcionarioBeanView.objetoselecionado.email}" required="true"
+							requiredMessage="Informe um E-mail." maxlength="100" style="width:350px"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="email"/>
+						</p:row>
+					</p:column>
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="ent_login" value="Login: " id="labelLogin"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputText id="ent_login" value="#{funcionarioBeanView.objetoselecionado.ent_login}" required="true"
+							requiredMessage="Informe um login" maxlength="30" style="width:350px"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="ent_login"/>
+						</p:row>
+					</p:column>
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="ent_senha" value="Senha: " id="labelSenha"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:password id="ent_senha" value="#{funcionarioBeanView.objetoselecionado.ent_senha}" required="true"
+							requiredMessage="Informe uma senha"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="ent_senha"/>
+						</p:row>
+					</p:column>
+					
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+
+</html>

@@ -106,10 +106,16 @@
  				
  				<div id="barramenu">
  					<p:tieredMenu id="menuEsquerdo" style="width: 180px; border: none; background: none; color: #000;">
- 						<sec:ifAnyGranted roles="CADASTRI_ACESSAR, ADMIN">
+ 						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
  							<p:submenu label="Cadastros" id="subMenuCadastro">
  								<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
  								<p:menuitem value="Cidade" id="menuCidade" action="#{cidadeBeanView.redirecionarFindEntidade}" immediate="true">
+ 								
+ 								</p:menuitem>
+ 								</sec:ifAnyGranted>
+ 								
+ 								<sec:ifAnyGranted roles="FUNCIONARIO_ACESSAR, ADMIN">
+ 								<p:menuitem value="Funcionário" id="menuFuncionario" action="#{funcionarioBeanView.redirecionarFindEntidade}" immediate="true">
  								
  								</p:menuitem>
  								</sec:ifAnyGranted>

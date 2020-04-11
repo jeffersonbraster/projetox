@@ -18,7 +18,10 @@ import projeto.model.classes.Entidade;
 public class FuncionarioBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	private String urlFind = "/cadastro/find_funcionario.jsf?faces-redirect=true";
+	
+	private String url = "/cadastro/cad_funcionario.jsf?faces-redirect=true";
 	
 	private Entidade objetoselecionado = new Entidade();
 	
@@ -29,6 +32,19 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	private EntidadeController entidadeController;
 	
 	private CarregamentoLazyListObject<Entidade> list = new CarregamentoLazyListObject<Entidade>();
+	
+	
+	
+	@Override
+	public String novo() throws Exception {
+		return url;
+	}
+	
+	
+	@Override
+	public String redirecionarFindEntidade() throws Exception {
+		return urlFind;
+	}
 	
 	
 	@Override
@@ -69,6 +85,16 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 		objetoselecionado = new Entidade();
 		list.clean();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
+	}
+	
+	@Override
+	public void excluir() throws Exception {
+		if(objetoselecionado.getEnt_codigo() != null && objetoselecionado.getEnt_codigo() > 0) {
+			entidadeController.delete(objetoselecionado);
+			list.remove(objetoselecionado);
+			objetoselecionado = new Entidade();
+			sucesso();
+		}
 	}
 	
 
