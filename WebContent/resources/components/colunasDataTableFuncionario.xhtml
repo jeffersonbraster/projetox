@@ -44,7 +44,7 @@
 	<p:column style="width:50px;">
 		<center>
 			<f:facet name="header">Excluir: </f:facet>
-			<p:commandLink action="#{funcionarioBeanView.excluir}" partialSubmit="true" process="@this" ajax="true" immediate="true"
+			<p:commandLink action="#{funcionarioBeanView.excluir}" partialSubmit="true" process="@this" ajax="false" immediate="true"
 			update="tableResult">
 				<h:graphicImage library="img" name="excluir16.png"/>
 				<f:setPropertyActionListener value="#{objeto}" target="#{funcionarioBeanView.objetoselecionado}"/>

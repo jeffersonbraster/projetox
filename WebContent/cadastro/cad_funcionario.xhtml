@@ -132,12 +132,16 @@
 				</p:panelGrid>
 			</p:panel>
 			
-			<util:botoesCrud managedBeanView="#{funcionarioBeanView}" camposReload=":formTamplate:msg" 
+			<util:botoesCrud managedBeanView="#{funcionarioBeanView}" camposReload=":formTamplate:msg, tableResult" 
 			botaoNovo="#{contextoBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN')}" botaoSalvar="#{contextoBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN') and funcionarioBeanView.objetoselecionado.ent_codigo == null}"
 			botaoAtualizar="#{contextoBean.possuiAcesso('FUNCIONARIO_EDITAR', 'ADMIN') and funcionarioBeanView.objetoselecionado.ent_codigo != null}"
-			botaoExcluir="#{contextoBean.possuiAcesso('FUNCIONARIO_EXCLUIR', 'ADMIN')}"></util:botoesCrud>
-			
+			botaoExcluir="#{contextoBean.possuiAcesso('FUNCIONARIO_EXCLUIR', 'ADMIN')}"></util:botoesCrud>			
 		</h:form>
+		
+		<p:dataTable id="tableResult" value="#{funcionarioBeanView.list.list}" var="objeto" rows="10" emptyMessage="Não tem registros" paginator="true"
+		lazy="true" paginatorTemplate="{FirstPageLink}" paginatorPosition="bottom">
+			<ui:include src="/resources/components/colunasDataTableFuncionario.xhtml"/>
+		</p:dataTable>
 	</ui:define>
 </ui:composition>
 

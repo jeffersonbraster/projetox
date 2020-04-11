@@ -105,18 +105,24 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 		if(!objetoselecionado.getAcessos().contains("USER")) {
 			objetoselecionado.getAcessos().add("USER");
 		}
-		entidadeController.merge(objetoselecionado);
+		objetoselecionado = entidadeController.merge(objetoselecionado);
+		list.add(objetoselecionado);
+		objetoselecionado = new Entidade();
 		sucesso();
 	}
 	
 	@Override
 	public void saveEdit() throws Exception {
-		entidadeController.merge(objetoselecionado);
+		objetoselecionado = entidadeController.merge(objetoselecionado);
+		list.add(objetoselecionado);
+		
+		objetoselecionado = new Entidade();
 		Messagens.msgSeverityInfo("Atualizado com sucesso!");
 	}
 	
 	@Override
 	public String editar() throws Exception {
+		list.clean();
 		return url;
 	}
 	
