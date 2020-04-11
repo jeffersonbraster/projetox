@@ -131,6 +131,12 @@
 					
 				</p:panelGrid>
 			</p:panel>
+			
+			<util:botoesCrud managedBeanView="#{funcionarioBeanView}" camposReload=":formTamplate:msg" 
+			botaoNovo="#{contextoBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN')}" botaoSalvar="#{contextoBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN') and funcionarioBeanView.objetoselecionado.ent_codigo == null}"
+			botaoAtualizar="#{contextoBean.possuiAcesso('FUNCIONARIO_EDITAR', 'ADMIN') and funcionarioBeanView.objetoselecionado.ent_codigo != null}"
+			botaoExcluir="#{contextoBean.possuiAcesso('FUNCIONARIO_EXCLUIR', 'ADMIN')}"></util:botoesCrud>
+			
 		</h:form>
 	</ui:define>
 </ui:composition>

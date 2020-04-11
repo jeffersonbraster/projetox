@@ -24,6 +24,23 @@
 		</center>
 	</p:column>
 	
+	<p:column style="width:100px;">
+		<center>
+			<f:facet name="header">Apelido: </f:facet>
+			<h:outputText value="#{objeto.ent_nomefantasia}"/>
+		</center>
+	</p:column>
+	
+	<p:column style="width:50px;">
+		<center>
+			<f:facet name="header">Editar: </f:facet>
+			<p:commandLink action="#{funcionarioBeanView.editar}"  ajax="true" immediate="true">
+				<h:graphicImage library="img" name="editar16.png"/>
+				<f:setPropertyActionListener value="#{objeto}" target="#{funcionarioBeanView.objetoselecionado}"/>
+			</p:commandLink>
+		</center>
+	</p:column>
+	
 	<p:column style="width:50px;">
 		<center>
 			<f:facet name="header">Excluir: </f:facet>

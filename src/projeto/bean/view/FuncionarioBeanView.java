@@ -11,6 +11,7 @@ import projeto.geral.controller.EntidadeController;
 import projeto.interfac.crud.InterfaceCrud;
 import projeto.lazy.CarregamentoLazyListObject;
 import projeto.model.classes.Entidade;
+import projeto.util.all.Messagens;
 
 @Controller
 @Scope("session")
@@ -37,6 +38,8 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String novo() throws Exception {
+		objetoselecionado = new Entidade();
+		list.clean();
 		return url;
 	}
 	
@@ -95,6 +98,26 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 			objetoselecionado = new Entidade();
 			sucesso();
 		}
+	}
+	
+	@Override
+	public void saveNotReturn() throws Exception {
+		if(!objetoselecionado.getAcessos().contains("USER")) {
+			objetoselecionado.getAcessos().add("USER");
+		}
+		entidadeController.merge(objetoselecionado);
+		sucesso();
+	}
+	
+	@Override
+	public void saveEdit() throws Exception {
+		entidadeController.merge(objetoselecionado);
+		Messagens.msgSeverityInfo("Atualizado com sucesso!");
+	}
+	
+	@Override
+	public String editar() throws Exception {
+		return url;
 	}
 	
 
